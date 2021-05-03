@@ -1,0 +1,29 @@
+{
+  // Formatters
+  "javascript.preferences.quoteStyle": "double",
+  // Отключить автообновление JS import при перемещении файлов
+  "javascript.suggest.autoImports": false,
+
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[scss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+
+  // Editor
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  // Vetur
+  "vetur.validation.template": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}

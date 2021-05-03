@@ -1,26 +1,38 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react"
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
+import "./App.css"
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { Provider, useSelector } from "react-redux"
+import store from "./store/index"
+import { selectIsAuthenticated } from "./store/profileSlice"
+
+import Login from "./modules/auth/pages/Login"
+import Main from "./modules/main/pages/Main"
+
+const App = () => {
+	return (
+		<Provider store={store}>
+			<Router>
+				<Switch>
+					<Route path="/login">
+						<Login />
+					</Route>
+
+					<PrivateRoute path="/">
+						<Main />
+					</PrivateRoute>
+				</Switch>
+			</Router>
+		</Provider>
+	)
 }
 
-export default App;
+function PrivateRoute({ children, ...rest }: { children: any; [k: string]: any }) {
+	const isAuthenticated = useSelector(selectIsAuthenticated)
+
+	const notAuthComponent = (location: string) => <Redirect to={{ pathname: "/login", state: { from: location } }} />
+
+	return <Route {...rest} render={({ location }: any) => (isAuthenticated ? children : notAuthComponent(location))} />
+}
+
+export default App
