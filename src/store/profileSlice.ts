@@ -1,7 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit"
 
+interface loginDataType {
+	email: string
+	password: string
+}
+
 const fakeAuth = {
-	login(cb: any) {
+	login(data: loginDataType, cb: any) {
 		setTimeout(cb, 100)
 	},
 
@@ -36,8 +41,8 @@ export const profileSlice = createSlice({
 	}
 })
 
-export const login = (cb?: any) => (dispatch: any) => {
-	fakeAuth.login(() => {
+export const login = (data: loginDataType, cb?: any) => (dispatch: any) => {
+	fakeAuth.login(data, () => {
 		dispatch(setUser("userName"))
 		dispatch(setIsAuthenticated(true))
 

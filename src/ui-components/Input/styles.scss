@@ -1,0 +1,42 @@
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+
+input::placeholder {
+	color: $gray;
+	font-size: 14px;
+}
+
+.ui-input {
+	&__label {
+		font-size: 14px;
+		padding-bottom: 4px;
+	}
+
+	&__input {
+		border: none;
+		background-image: none;
+		background-color: transparent;
+		box-shadow: none;
+		outline: none;
+
+		background: $gray-lightest;
+		color: $black;
+		padding: 6px 10px;
+		border-radius: 5px;
+		border: 2px solid transparent;
+		font-size: 14px;
+
+		&:focus {
+			border-color: $primary;
+		}
+	}
+}
