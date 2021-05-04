@@ -13,7 +13,8 @@
 	border-radius: 5px;
 	font-size: 14px;
 	font-family: Montserrat;
-	font-weight: 400;
+	font-weight: bold;
+	text-align: center;
 
 	&[disabled] {
 		pointer-events: none;

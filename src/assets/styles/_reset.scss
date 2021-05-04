@@ -1,0 +1,173 @@
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+menu,
+nav,
+section,
+summary {
+	display: block;
+}
+
+[hidden],
+template {
+	display: none;
+}
+
+hr {
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+	height: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+h1 {
+	font-size: 22px;
+}
+
+button,
+input,
+select,
+textarea {
+	font: inherit;
+	margin: 0;
+}
+
+button {
+	overflow: visible;
+}
+
+button,
+html input[type="button"],
+input[type="reset"],
+input[type="submit"] {
+	-webkit-appearance: button;
+	cursor: pointer;
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+	box-sizing: border-box;
+	padding: 0;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	height: auto;
+}
+
+input[type="search"] {
+	-webkit-appearance: textfield;
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+	-webkit-appearance: none;
+}
+
+html,
+body,
+#root {
+	width: 100%;
+	height: 100%;
+}
+
+* {
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+	-moz-box-sizing: border-box; /* Firefox, other Gecko */
+	box-sizing: border-box; /* Opera/IE 8+ */
+}
+
+*,
+*:after,
+*:before {
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
+}
+
+:root {
+	font-size: 14px;
+}
+
+html,
+body {
+	margin: 0;
+	overscroll-behavior-y: contain;
+	-webkit-overflow-scrolling: touch;
+}
+
+html {
+	position: fixed;
+}
+
+body {
+	color: $black;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	background: lighten($gray-lightest, 3);
+	line-height: 1.4;
+	position: relative;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+td,
+th {
+	padding: 0;
+}
+
+button {
+	cursor: pointer;
+	border: 0;
+	background: none;
+	text-align: left;
+}
+
+button:focus {
+	outline: 0;
+}
+
+button[disabled],
+html input[disabled] {
+	cursor: default;
+}
+
+img {
+	display: block;
+}
+
+a {
+	text-decoration: none;
+	color: $blue;
+}
+
+input:focus {
+	outline: 0;
+}
+
+::selection {
+	color: $primary-dark;
+	background: $primary-light;
+}

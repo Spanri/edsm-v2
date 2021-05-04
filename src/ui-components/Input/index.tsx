@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
 
@@ -11,17 +11,34 @@ interface propsType {
 	label?: any
 	width?: string
 	height?: string
+	right: any
 	onChange?: (value: any) => void
 	onChangeFull?: (value: any) => void
 }
 
 const Input = (props: propsType) => {
+	const [isFocus, setIsFocus] = useState(false)
+
 	const onlyNumber = (event: any) => {
 		let keyCode = event.keyCode ? event.keyCode : event.which
 		if ((keyCode < 48 || keyCode > 57) && keyCode !== 46) {
 			// 46 is dot
 			event.preventDefault()
 		}
+	}
+
+	const handleKeyPress = (event: any) => {
+		if (props.type === "number") {
+			onlyNumber(event)
+		}
+	}
+
+	const handleFocus = (event: any) => {
+		setIsFocus(true)
+	}
+
+	const handleBlur = (event: any) => {
+		setIsFocus(false)
 	}
 
 	const handleChange = (event: any) => {
@@ -38,15 +55,20 @@ const Input = (props: propsType) => {
 		<div className={`ui-input ${props.className}`}>
 			{props.label && <div className="ui-input__label">{props.label}</div>}
 
-			<input
-				className="ui-input__input"
-				value={props.value}
-				type={props.type}
-				placeholder={props.placeholder || (props.label as string) || ""}
-				style={{ width: props.width, height: props.height }}
-				onKeyPress={event => (props.type === "number" ? onlyNumber(event) : null)}
-				onChange={handleChange}
-			/>
+			<div className={`ui-input__content ${isFocus && "focus"}`}>
+				<input
+					className="ui-input__input"
+					value={props.value}
+					type={props.type}
+					placeholder={props.placeholder || (props.label as string) || ""}
+					style={{ width: props.width, height: props.height }}
+					onKeyPress={handleKeyPress}
+					onFocus={handleFocus}
+					onBlur={handleBlur}
+					onChange={handleChange}
+				/>
+				{props.right && <div className="ui-input__right">{props.right}</div>}
+			</div>
 		</div>
 	)
 }
@@ -66,6 +88,7 @@ Input.propTypes = {
 	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	width: PropTypes.string,
 	height: PropTypes.string,
+	right: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 	onChange: PropTypes.func,
 	onChangeFull: PropTypes.func
 }

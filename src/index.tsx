@@ -1,6 +1,5 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import "./index.scss"
 import { STATE_NAME } from "./helpers/lsState.helper"
 
 import App from "./App"

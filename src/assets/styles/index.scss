@@ -1,16 +1,3 @@
-$white: white;
-$gray-lightest: #eff7fc;
-$gray-light: #e0edf4;
-$gray: #b4cbd8;
-$gray-dark: #6e8c9c;
-$black: #403f3f;
-
-$primary-lightest: #eaf7fe;
-$primary-light: #c9eff8;
-$primary: #53b3e5;
-$primary-dark: #3a7fa6;
-
-$blue: #00a6ff;
-$green: #76e7cc;
-$yellow: #ffe298;
-$red: #ed6988;
+@import "./variables.scss";
+@import "./fonts.scss";
+@import "./reset.scss";

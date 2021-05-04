@@ -21,6 +21,21 @@ input::placeholder {
 		padding-bottom: 4px;
 	}
 
+	&__content {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		background: $gray-lightest;
+		color: $black;
+		border-radius: 5px;
+		border: 2px solid transparent;
+
+		&.focus {
+			border-color: $primary;
+		}
+	}
+
 	&__input {
 		border: none;
 		background-image: none;
@@ -28,15 +43,11 @@ input::placeholder {
 		box-shadow: none;
 		outline: none;
 
-		background: $gray-lightest;
-		color: $black;
 		padding: 6px 10px;
-		border-radius: 5px;
-		border: 2px solid transparent;
 		font-size: 14px;
+	}
 
-		&:focus {
-			border-color: $primary;
-		}
+	&__right {
+		padding-right: 10px;
 	}
 }

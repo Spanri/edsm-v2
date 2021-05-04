@@ -15,6 +15,7 @@ const Login = () => {
 
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
+	const [isShowPassword, setIsShowPassword] = useState(false)
 
 	const { from }: { from: { pathname: string } } = location.state || ({ from: { pathname: "/" } } as any)
 
@@ -45,11 +46,20 @@ const Login = () => {
 				<form className="login__form form">
 					<h2 className="form__title">Войти в систему</h2>
 
-					<Input className="form__input" value={email} onChange={setEmail} placeholder="example@example.com" width="100%" label="EMAIL" />
+					<Input
+						className="form__input"
+						value={email}
+						onChange={setEmail}
+						type="email"
+						placeholder="example@example.com"
+						width="100%"
+						label="EMAIL"
+					/>
 					<Input
 						className="form__input"
 						value={password}
 						onChange={setPassword}
+						type={isShowPassword ? "text" : "password"}
 						placeholder="123456#a"
 						width="100%"
 						label={
@@ -58,6 +68,7 @@ const Login = () => {
 								<span className="form__password-remember-button link">Забыли пароль?</span>
 							</div>
 						}
+						right={<i className={isShowPassword ? "icon-eye-close" : "icon-eye-open"} onClick={e => setIsShowPassword(!isShowPassword)} />}
 					/>
 
 					<Button className="form__submit" width="100%" height="50px" onClick={onLogin}>
