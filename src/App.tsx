@@ -1,6 +1,5 @@
 import React from "react"
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom"
-import "./App.css"
 
 import { Provider, useSelector } from "react-redux"
 import store from "./store/index"
@@ -15,11 +14,11 @@ const App = () => {
 			<Router>
 				<Switch>
 					<Route path="/login">
-						<Login />
+						<LoginWrapper />
 					</Route>
 
 					<PrivateRoute path="/">
-						<Main />
+						<MainWrapper />
 					</PrivateRoute>
 				</Switch>
 			</Router>
@@ -27,12 +26,22 @@ const App = () => {
 	)
 }
 
-function PrivateRoute({ children, ...rest }: { children: any; [k: string]: any }) {
+const MainWrapper = () => {
+	return <Main />
+}
+
+const LoginWrapper = () => {
 	const isAuthenticated = useSelector(selectIsAuthenticated)
+	const loggedComponent = (location: any) => <Redirect to={{ pathname: location.state.from.pathname }} />
 
-	const notAuthComponent = (location: string) => <Redirect to={{ pathname: "/login", state: { from: location } }} />
+	return isAuthenticated ? <Route render={({ location }: any) => loggedComponent(location)} /> : <Login />
+}
 
-	return <Route {...rest} render={({ location }: any) => (isAuthenticated ? children : notAuthComponent(location))} />
+const PrivateRoute = ({ children, ...rest }: { children: any; [k: string]: any }) => {
+	const isAuthenticated = useSelector(selectIsAuthenticated)
+	const notLoggedComponent = (location: any) => <Redirect to={{ pathname: "/login", state: { from: location } }} />
+
+	return <Route {...rest} render={({ location }: any) => (isAuthenticated ? children : notLoggedComponent(location))} />
 }
 
 export default App

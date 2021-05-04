@@ -48,7 +48,7 @@ export const login = (cb?: any) => (dispatch: any) => {
 }
 
 export const logout = (cb?: any) => (dispatch: any) => {
-	fakeAuth.login(() => {
+	fakeAuth.logout(() => {
 		dispatch(setIsAuthenticated(false))
 		dispatch(setUser(null))
 
