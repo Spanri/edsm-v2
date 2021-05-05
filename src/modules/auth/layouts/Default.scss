@@ -1,11 +1,15 @@
-.login {
-	background-color: $white;
-	display: flex;
+.auth-default {
+	background-color: $primary-lightest;
+	width: 100%;
+	height: 100%;
 
-	&-wrapper {
-		background-color: $primary-lightest;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&-inner {
 		width: 100%;
-		height: 100%;
+		height: max-content;
 
 		display: flex;
 		align-items: center;
@@ -13,9 +17,14 @@
 	}
 
 	&__description {
+		min-height: 500px;
+		width: 100%;
+		min-width: 300px;
+		max-width: 500px;
+
 		background-color: $primary;
 		padding: 50px;
-		max-width: 500px;
+		margin-bottom: auto;
 		border-top-left-radius: 3px;
 		border-bottom-left-radius: 3px;
 
@@ -25,6 +34,7 @@
 		&-title {
 			flex-grow: 1;
 			color: $white;
+			word-break: break-word;
 			text-transform: uppercase;
 			font-family: Montserrat;
 			font-size: 32px;
@@ -41,49 +51,17 @@
 		}
 	}
 
-	.link {
-		color: $blue;
+	&__children {
+		min-height: 500px;
+		width: 100%;
+		min-width: 300px;
+		max-width: 450px;
 
-		&:hover {
-			cursor: pointer;
-			transition: 0.3s;
-			color: $primary-dark;
-		}
-	}
-
-	.form {
 		padding: 50px 80px;
 		border-top-right-radius: 3px;
 		border-bottom-right-radius: 3px;
-		min-width: 450px;
-
-		&__title {
-			text-transform: uppercase;
-			font-size: 24px;
-			font-family: Montserrat;
-			font-weight: 800;
-			margin: 0;
-			padding-bottom: 50px;
-		}
-
-		&__input {
-			margin-bottom: 25px;
-		}
-
-		&__submit {
-			margin-top: 10px;
-			margin-bottom: 40px;
-		}
-
-		&__password {
-			display: flex;
-			justify-content: space-between;
-			font-size: 14px;
-		}
-
-		&__registration-button {
-			text-align: center;
-		}
+		background-color: $white;
+		margin-bottom: auto;
 	}
 
 	.slogan {

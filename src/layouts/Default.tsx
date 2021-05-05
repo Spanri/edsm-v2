@@ -1,8 +1,8 @@
 import React from "react"
-import "./styles.scss"
+import "./Default.scss"
 
-const Default = (props: { children: any }) => {
+const DefaultLayout = (props: { children: any }) => {
 	return <div className="default">{props.children}</div>
 }
 
-export default Default
+export default DefaultLayout

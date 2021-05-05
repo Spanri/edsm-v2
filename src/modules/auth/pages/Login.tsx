@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import "./styles.scss"
+import "./Login.scss"
 import { useHistory, useLocation } from "react-router-dom"
 
 import { useDispatch } from "react-redux"
@@ -7,9 +7,10 @@ import { login } from "../../../store/profileSlice"
 
 import Input from "../../../ui-components/Input/index"
 import Button from "../../../ui-components/Button/index"
+import Link from "../../../ui-components/Link/index"
 
 const Login = () => {
-	let history = useHistory()
+	const history = useHistory()
 	const location = useLocation()
 	const dispatch = useDispatch()
 
@@ -25,60 +26,47 @@ const Login = () => {
 	}
 
 	return (
-		// <p>Войдите, чтобы увидеть страницу {from.pathname}</p>
-		<div className="login-wrapper">
-			<div className="login">
-				<div className="login__description">
-					<h1 className="login__description-title">Система электронного документооборота “АНИНА”</h1>
-					<div className="login__description-slogan slogan">
-						<div className="slogan__title">Наш слоган:</div>
-						<div className="slogan__description">
-							<span>
-								Не гарантируем работоспособность,
-								<br />
-								зато дизайн вон какой!
-							</span>
-							<span className="slogan__description-icon">👍</span>
-						</div>
+		<form className="login">
+			<h2 className="login__title">Войти в систему</h2>
+
+			<Input
+				className="login__input"
+				value={email}
+				onChange={setEmail}
+				type="email"
+				placeholder="example@example.com"
+				width="100%"
+				label="EMAIL"
+			/>
+			<Input
+				className="login__input"
+				value={password}
+				onChange={setPassword}
+				type={isShowPassword ? "text" : "password"}
+				placeholder="123456#a"
+				width="100%"
+				label={
+					<div className="login__password">
+						<span className="login__password-title">ПАРОЛЬ</span>
+						<Link className="login__password-remember-button" to={{ pathname: "password-reset/" }}>
+							Забыли пароль?
+						</Link>
 					</div>
-				</div>
-
-				<form className="login__form form">
-					<h2 className="form__title">Войти в систему</h2>
-
-					<Input
-						className="form__input"
-						value={email}
-						onChange={setEmail}
-						type="email"
-						placeholder="example@example.com"
-						width="100%"
-						label="EMAIL"
+				}
+				right={
+					<i
+						className={["login__password-show", isShowPassword ? "icon-eye-close" : "icon-eye-open"].join(" ")}
+						onClick={e => setIsShowPassword(!isShowPassword)}
 					/>
-					<Input
-						className="form__input"
-						value={password}
-						onChange={setPassword}
-						type={isShowPassword ? "text" : "password"}
-						placeholder="123456#a"
-						width="100%"
-						label={
-							<div className="form__password">
-								<span className="form__password-title">ПАРОЛЬ</span>
-								<span className="form__password-remember-button link">Забыли пароль?</span>
-							</div>
-						}
-						right={<i className={isShowPassword ? "icon-eye-close" : "icon-eye-open"} onClick={e => setIsShowPassword(!isShowPassword)} />}
-					/>
+				}
+			/>
 
-					<Button className="form__submit" width="100%" height="50px" onClick={onLogin}>
-						ВОЙТИ
-					</Button>
+			<Button className="login__submit" width="100%" height="50px" onClick={onLogin}>
+				ВОЙТИ
+			</Button>
 
-					<div className="form__registration-button link">Хочу зарегистрироваться</div>
-				</form>
-			</div>
-		</div>
+			<div className="login__registration-button link">Хочу зарегистрироваться</div>
+		</form>
 	)
 }
 

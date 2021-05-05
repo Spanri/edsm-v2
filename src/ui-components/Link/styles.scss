@@ -1,0 +1,10 @@
+.ui-link {
+	color: $blue;
+	font-size: 14px;
+
+	&:hover {
+		cursor: pointer;
+		transition: 0.3s;
+		color: $primary-dark;
+	}
+}
