@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
 import useAlert from "../../hooks/alert"
@@ -11,8 +11,24 @@ interface propsType {
 	errorItems: alertType[]
 }
 
+const MAX_COUNT = 5
+
 const AlertManager = (props: propsType) => {
 	const { deleteAlert } = useAlert()
+
+	const normalizeAlerts = (items: alertType[]) => {
+		items.forEach((item, index) => {
+			if (index > MAX_COUNT) {
+				deleteAlert(item.id)
+			}
+		})
+	}
+
+	const normalizedErrorItems = [...props.errorItems].reverse()
+	useEffect(() => normalizeAlerts(normalizedErrorItems), [normalizedErrorItems])
+
+	const normalizedSuccessItems = [...props.successItems].reverse()
+	useEffect(() => normalizeAlerts(normalizedErrorItems), [normalizedErrorItems])
 
 	const onDeleteAlert = (alertItem: alertType) => {
 		deleteAlert(alertItem.id)
@@ -24,9 +40,9 @@ const AlertManager = (props: propsType) => {
 				<div className="ui-alert-manager__error block">
 					<div className="block__title">Ошибка</div>
 
-					{props.errorItems.map((errorItem, errorIndex) => (
+					{normalizedErrorItems.map(errorItem => (
 						<Alert
-							key={`error-item-${errorIndex}`}
+							key={`error-item-${errorItem.id}`}
 							className="block__item"
 							theme="error"
 							timeout={errorItem.timeout}
@@ -42,9 +58,9 @@ const AlertManager = (props: propsType) => {
 				<div className="ui-alert-manager__success block">
 					<div className="block__title">Успешно</div>
 
-					{props.successItems.map((successItem, successIndex) => (
+					{normalizedSuccessItems.map(successItem => (
 						<Alert
-							key={`success-item-${successIndex}`}
+							key={`success-item-${successItem.id}`}
 							className="block__item"
 							theme="success"
 							timeout={successItem.timeout}

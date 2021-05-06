@@ -7,6 +7,7 @@ const THEMES = ["primary", "primary-animated", "gray"] as const
 
 interface propsType {
 	children: any
+	ref: any
 	className?: string
 	type?: typeof TYPES[number]
 	theme?: typeof THEMES[number]
@@ -25,6 +26,7 @@ const Button = (props: propsType) => {
 
 	return (
 		<button
+			ref={props.ref}
 			className={`ui-button ${props.theme} ${props.className}`}
 			type={props.type || "button"}
 			disabled={props.disabled}
@@ -45,6 +47,7 @@ Button.defaultProps = {
 
 Button.propTypes = {
 	children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	ref: PropTypes.any,
 	className: PropTypes.string,
 	type: PropTypes.oneOf(TYPES),
 	theme: PropTypes.oneOf(THEMES),

@@ -1,7 +1,11 @@
 .ui-alert-manager {
+	z-index: 100;
+
 	.block {
+		min-width: 300px;
 		padding: 15px;
 		border-radius: 3px;
+		animation: fadein 0.7s;
 
 		&__title {
 			color: $white;
@@ -11,6 +15,7 @@
 
 		&__item {
 			margin-bottom: 15px;
+			position: relative;
 
 			&:last-child {
 				margin-bottom: 0;
@@ -24,5 +29,14 @@
 
 	&__success {
 		background: $green;
+	}
+}
+
+@keyframes fadein {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
 	}
 }

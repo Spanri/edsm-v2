@@ -12,7 +12,7 @@ interface loginDataType {
 }
 
 interface alertType {
-	id: number
+	id: string
 	text: string
 	timeout: number
 }

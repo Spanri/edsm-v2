@@ -34,11 +34,18 @@ export const alertSlice = createSlice({
 		/**
 		 * Принимает id
 		 */
-		deleteAlert: (state, action: { payload: number }) => {
+		deleteAlert: (state, action: { payload: string }) => {
 			const deletingId = action.payload
 
-			state.successItems = state.successItems.filter(item => item.id != deletingId)
-			state.errorItems = state.errorItems.filter(item => item.id != deletingId)
+			const newSuccessItems = state.successItems.filter(item => item.id != deletingId)
+			if (newSuccessItems.length != state.successItems.length) {
+				state.successItems = newSuccessItems
+			}
+
+			const newErrorItems = state.errorItems.filter(item => item.id != deletingId)
+			if (newSuccessItems.length != state.errorItems.length) {
+				state.errorItems = newErrorItems
+			}
 		},
 
 		clearSuccesses: state => {

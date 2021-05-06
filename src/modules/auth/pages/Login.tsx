@@ -69,7 +69,7 @@ const Login = () => {
 				}
 			/>
 
-			<Button className="login__submit" width="100%" height="50px" onClick={onLogin}>
+			<Button className="login__submit" width="100%" onClick={onLogin}>
 				ВОЙТИ
 			</Button>
 

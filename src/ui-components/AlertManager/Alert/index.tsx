@@ -1,9 +1,8 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
 
 const THEMES = ["info", "success", "error"] as const
-
 interface propsType {
 	children: any
 	className?: string
@@ -13,13 +12,28 @@ interface propsType {
 }
 
 const Alert = (props: propsType) => {
-	setTimeout((event: any) => {
-		if (props.onDelete) {
-			props.onDelete()
-		}
-	}, props.timeout)
+	const [isShow, setIsShow] = useState(true)
 
-	return <div className={`ui-alert ${props.theme} ${props.className}`}>{props.children}</div>
+	useEffect(() => {
+		// Подождать, потом сделать анимацию удаления и потом вызвать onDelete
+		const timeoutId = setTimeout((event: any) => {
+			setIsShow(false)
+
+			const ANIMATION_DURATION = 600
+			setTimeout(() => {
+				if (props.onDelete) {
+					props.onDelete()
+				}
+			}, ANIMATION_DURATION)
+		}, props.timeout)
+
+		return () => {
+			clearTimeout(timeoutId)
+			setIsShow(false)
+		}
+	}, [])
+
+	return <div className={`ui-alert ${props.theme} ${props.className} ${!isShow && "hide"}`}>{props.children}</div>
 }
 
 Alert.defaultProps = {
