@@ -1,19 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit"
-
-interface loginDataType {
-	email: string
-	password: string
-}
-
-const fakeAuth = {
-	login(data: loginDataType, cb: any) {
-		setTimeout(cb, 100)
-	},
-
-	logout(cb: any) {
-		setTimeout(cb, 100)
-	}
-}
+import authApi from "../api/auth"
 
 export const profileSlice = createSlice({
 	name: "profile",
@@ -41,26 +27,18 @@ export const profileSlice = createSlice({
 	}
 })
 
-export const login = (data: loginDataType, cb?: any) => (dispatch: any) => {
-	fakeAuth.login(data, () => {
-		dispatch(setUser("userName"))
-		dispatch(setIsAuthenticated(true))
+export const login = (data: loginDataType) => async (dispatch: any) => {
+	await authApi.login(data)
 
-		if (cb) {
-			cb()
-		}
-	})
+	dispatch(setUser("userName"))
+	dispatch(setIsAuthenticated(true))
 }
 
-export const logout = (cb?: any) => (dispatch: any) => {
-	fakeAuth.logout(() => {
-		dispatch(setIsAuthenticated(false))
-		dispatch(setUser(null))
+export const logout = () => async (dispatch: any) => {
+	await authApi.logout()
 
-		if (cb) {
-			cb()
-		}
-	})
+	dispatch(setIsAuthenticated(false))
+	dispatch(setUser(null))
 }
 
 export const selectIsAuthenticated = (state: any) => state.profile.isAuthenticated

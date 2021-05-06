@@ -16,6 +16,10 @@
 		font-weight: 800;
 		margin: 0;
 		padding-bottom: 50px;
+
+		@media (max-width: 450px) {
+			font-size: 18px;
+		}
 	}
 
 	&__input {

@@ -1,6 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit"
-import profileReducer from "./profileSlice"
 import { loadFromLocalStorage, saveToLocalStorage } from "../helpers/lsState.helper"
+
+import profileReducer from "./profileSlice"
+import alertReducer from "./alertSlice"
 
 // things that need to be saved
 const savingState = (state: any) => {
@@ -14,7 +16,8 @@ const savingState = (state: any) => {
 
 const store = configureStore({
 	reducer: {
-		profile: profileReducer
+		profile: profileReducer,
+		alert: alertReducer
 	},
 	preloadedState: loadFromLocalStorage()
 })

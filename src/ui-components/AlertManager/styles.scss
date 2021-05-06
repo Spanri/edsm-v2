@@ -1,0 +1,28 @@
+.ui-alert-manager {
+	.block {
+		padding: 15px;
+		border-radius: 3px;
+
+		&__title {
+			color: $white;
+			font-size: 16px;
+			padding-bottom: 15px;
+		}
+
+		&__item {
+			margin-bottom: 15px;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	&__error {
+		background: $red;
+	}
+
+	&__success {
+		background: $green;
+	}
+}

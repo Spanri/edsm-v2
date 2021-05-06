@@ -2,6 +2,17 @@
 
 interface authType {
 	user: any
-	login: (cb?: any) => {}
-	logout: (cb?: any) => {}
+	login: () => void
+	logout: () => void
+}
+
+interface loginDataType {
+	email: string
+	password: string
+}
+
+interface alertType {
+	id: number
+	text: string
+	timeout: number
 }

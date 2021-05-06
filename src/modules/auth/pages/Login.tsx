@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom"
 
 import { useDispatch } from "react-redux"
 import { login } from "../../../store/profileSlice"
+import useAlert from "../../../hooks/alert"
 
 import Input from "../../../ui-components/Input/index"
 import Button from "../../../ui-components/Button/index"
@@ -13,6 +14,7 @@ const Login = () => {
 	const history = useHistory()
 	const location = useLocation()
 	const dispatch = useDispatch()
+	const { addError, clearErrors } = useAlert()
 
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
@@ -20,9 +22,15 @@ const Login = () => {
 
 	const { from }: { from: { pathname: string } } = location.state || ({ from: { pathname: "/" } } as any)
 
-	const onLogin = () => {
-		const cb = () => history.replace(from)
-		dispatch(login({ email, password }, cb))
+	const onLogin = async () => {
+		try {
+			await dispatch(login({ email, password }))
+
+			history.replace(from)
+			clearErrors()
+		} catch ({ message }) {
+			addError(message)
+		}
 	}
 
 	return (
