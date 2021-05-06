@@ -1,44 +1,76 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
+import { CustomTimer } from "../../../helpers/timer.helper"
+
+import Boop from "../../Boop"
 
 const THEMES = ["info", "success", "error"] as const
+
 interface propsType {
 	children: any
 	className?: string
-	theme?: typeof THEMES[number]
-	timeout?: number
+	theme: typeof THEMES[number]
+	timeout: number
 	onDelete?: () => void
 }
 
 const Alert = (props: propsType) => {
 	const [isShow, setIsShow] = useState(true)
+	const [customTimer, setCustomTimer] = useState({ getTimeLeft: () => 0 }) as any
+	const [timeLeft, setTimeLeft] = useState(0) as any
 
 	useEffect(() => {
-		// Подождать, потом сделать анимацию удаления и потом вызвать onDelete
-		const timeoutId = setTimeout((event: any) => {
-			setIsShow(false)
+		const customTimer = new CustomTimer((event: any) => onPrettyDelete(), props.timeout)
 
-			const ANIMATION_DURATION = 600
-			setTimeout(() => {
-				if (props.onDelete) {
-					props.onDelete()
-				}
-			}, ANIMATION_DURATION)
-		}, props.timeout)
+		setCustomTimer(customTimer)
+
+		setInterval(() => {
+			setTimeLeft(customTimer.getTimeLeft())
+		}, 10)
 
 		return () => {
-			clearTimeout(timeoutId)
+			customTimer.clear()
 			setIsShow(false)
 		}
 	}, [])
 
-	return <div className={`ui-alert ${props.theme} ${props.className} ${!isShow && "hide"}`}>{props.children}</div>
+	// Подождать, потом сделать анимацию удаления и потом вызвать onDelete
+	const onPrettyDelete = () => {
+		setIsShow(false)
+
+		const ANIMATION_DURATION = 600
+		setTimeout(() => {
+			if (props.onDelete) {
+				props.onDelete()
+			}
+		}, ANIMATION_DURATION)
+	}
+
+	return (
+		<div
+			className={`ui-alert ${props.theme} ${props.className} ${!isShow ? "hide" : ""}`}
+			onMouseEnter={e => customTimer.pause()}
+			onMouseLeave={e => customTimer.start()}
+		>
+			<div className="ui-alert-inner">
+				<div className="ui-alert__content">{props.children}</div>
+
+				<div className="ui-alert__close">
+					<Boop>
+						<i className="ui-alert__close-icon icon-close" onClick={onPrettyDelete} />
+					</Boop>
+				</div>
+			</div>
+
+			<div className="ui-alert__loading" style={{ width: (timeLeft / props.timeout) * 100 + "%" }} />
+		</div>
+	)
 }
 
 Alert.defaultProps = {
 	theme: "info",
-	timeout: 3000
+	timeout: 4000
 }
 
 Alert.propTypes = {

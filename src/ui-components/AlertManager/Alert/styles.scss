@@ -1,13 +1,41 @@
 .ui-alert {
+	position: relative;
 	background: $white;
-	padding: 12px 10px;
-	font-size: 14px;
 	border-radius: 3px;
-
 	animation: fadein 0.6s;
+
+	&-inner {
+		display: flex;
+		justify-content: space-between;
+
+		padding: 12px 10px;
+		font-size: 14px;
+	}
 
 	&.hide {
 		animation: fadeout 0.6s;
+	}
+
+	&__close {
+		padding-left: 15px;
+		font-size: 20px;
+		color: $gray;
+
+		&:hover {
+			transition: 0.3s;
+			cursor: pointer;
+			color: $gray-dark;
+		}
+	}
+
+	&__loading {
+		position: absolute;
+		bottom: 0;
+
+		height: 5px;
+		background: $primary;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
 	}
 }
 
