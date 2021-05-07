@@ -10,15 +10,11 @@ const AuthIndex = () => {
 	return (
 		<Switch>
 			<DefaultRoute path="/login">
-				<AuthDefaultLayout>
-					<Login />
-				</AuthDefaultLayout>
+				<AuthDefaultLayout>{params => <Login {...params} />}</AuthDefaultLayout>
 			</DefaultRoute>
 
 			<DefaultRoute path="/password-reset">
-				<AuthDefaultLayout>
-					<PasswordReset />
-				</AuthDefaultLayout>
+				<AuthDefaultLayout>{params => <PasswordReset {...params} />}</AuthDefaultLayout>
 			</DefaultRoute>
 
 			<Route path="*">

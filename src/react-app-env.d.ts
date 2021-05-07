@@ -11,6 +11,10 @@ interface loginDataType {
 	password: string
 }
 
+interface resetPasswordDataType {
+	email: string
+}
+
 interface alertType {
 	id: string
 	text: string

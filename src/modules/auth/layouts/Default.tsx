@@ -1,9 +1,12 @@
 import React from "react"
 import "./Default.scss"
+import { useResizeDetector } from "react-resize-detector"
 
 import Boop from "../../../ui-components/Boop"
 
-const AuthDefaultLayout = (props: { children: any }) => {
+const AuthDefaultLayout = (props: { children: (params: any) => any }) => {
+	const { width: parentWidth, height: parentHeight, ref: parentRef } = useResizeDetector()
+
 	return (
 		<div className="auth-default">
 			<div className="auth-default__small-description">Система электронного документооборота “АНИНА”</div>
@@ -28,8 +31,12 @@ const AuthDefaultLayout = (props: { children: any }) => {
 					</div>
 				</div>
 
-				<div className="auth-default__children">{props.children}</div>
+				<div ref={parentRef} className="auth-default__children-wrapper">
+					<div className="auth-default__children">{props.children({ parentWidth, parentHeight })}</div>
+				</div>
 			</div>
+
+			<div className="auth-default__copyright">© 2021 Spanri</div>
 		</div>
 	)
 }

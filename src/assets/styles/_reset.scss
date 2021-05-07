@@ -172,6 +172,6 @@ input:focus {
 }
 
 ::selection {
-	color: $primary-dark;
-	background: $primary-light;
+	color: darken($primary-dark, 10);
+	background: darken($primary-light, 10);
 }

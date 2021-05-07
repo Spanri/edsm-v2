@@ -1,26 +1,30 @@
 const path = require("path")
 
+// const { alias, configPaths } = require("react-app-rewire-alias")
+// const aliasMap = configPaths("./tsconfig.paths.json")
+
 /**
- * Webpack, but overrided))
+ * Webpack, but overrided
  * @param {Object} config
  */
 module.exports = function override(config) {
-	if (!config.module.rules) config.module.rules = []
-	if (!config.resolve.alias) config.resolve.alias = {}
+	const modifiedConfig = config // alias(aliasMap)(config)
 
-	config.module.rules.push({
+	if (!modifiedConfig.module.rules) modifiedConfig.module.rules = []
+	modifiedConfig.module.rules.push({
 		test: /\.scss$/,
 		use: [
 			{
 				loader: "sass-resources-loader",
 				options: {
-					resources: [path.resolve(__dirname, "./src/assets/styles/index.scss")]
+					resources: [path.resolve(__dirname, "./src/assets/styles/indexForEveryComponent.scss")]
 				}
 			}
 		]
 	})
 
-	config.resolve.alias = {
+	if (!modifiedConfig.resolve.alias) modifiedConfig.resolve.alias = {}
+	modifiedConfig.resolve.alias = {
 		...config.resolve.alias,
 		react: path.join(__dirname, "node_modules", "react"),
 		"@node_modules": path.join(__dirname, "node_modules"),
@@ -29,8 +33,10 @@ module.exports = function override(config) {
 		"@assets": path.resolve(__dirname, "src", "assets"),
 		"@ui-components": path.resolve(__dirname, "src", "ui-components"),
 		"@helpers": path.resolve(__dirname, "src", "helpers"),
+		"@hooks": path.resolve(__dirname, "src", "hooks"),
+		"@layouts": path.resolve(__dirname, "src", "layouts"),
 		"@modules": path.resolve(__dirname, "src", "modules")
 	}
 
-	return config
+	return modifiedConfig
 }

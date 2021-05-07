@@ -41,6 +41,10 @@ export const logout = () => async (dispatch: any) => {
 	dispatch(setUser(null))
 }
 
+export const resetPassword = (data: resetPasswordDataType) => async (dispatch: any) => {
+	await authApi.resetPassword(data)
+}
+
 export const selectIsAuthenticated = (state: any) => state.profile.isAuthenticated
 export const selectUser = (state: any) => state.profile.user
 

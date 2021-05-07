@@ -1,16 +1,17 @@
 import React from "react"
+import "@assets/styles/indexApp.scss"
 import "./App.scss"
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
 import { Provider, useSelector } from "react-redux"
-import store from "./store/index"
-import { selectIsAuthenticated } from "./store/profileSlice"
-import { selectSuccessItems, selectErrorItems } from "./store/alertSlice"
+import store from "@store/index"
+import { selectIsAuthenticated } from "@store/profileSlice"
+import { selectSuccessItems, selectErrorItems } from "@store/alertSlice"
 
-import Default from "./layouts/Default"
-import Auth from "./modules/auth/pages/_Index"
-import Main from "./modules/main/pages/Main"
-import AlertManager from "./ui-components/AlertManager"
+import Default from "@layouts/Default"
+import Auth from "@modules/auth/pages/_Index"
+import Main from "@modules/main/pages/Main"
+import AlertManager from "@ui-components/AlertManager"
 
 const App = () => {
 	return (

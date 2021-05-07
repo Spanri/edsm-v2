@@ -18,4 +18,12 @@ const logout = async () => {
 	}
 }
 
-export default { login, logout }
+const resetPassword = async ({ email }: resetPasswordDataType) => {
+	try {
+		// Exit action
+	} catch (errors) {
+		throw errors
+	}
+}
+
+export default { login, logout, resetPassword }
