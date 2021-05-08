@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import "./PasswordReset.scss"
+import React, { useState, useEffect } from "react"
+import "./styles.scss"
 import { useResizeDetector } from "react-resize-detector"
 
 import { useDispatch } from "react-redux"
-import { resetPassword } from "@store/profileSlice"
-import useAlert from "@hooks/alert"
+import { resetPassword } from "@/store/profileSlice"
+import useAlert from "@/hooks/alert"
 
-import Input from "@ui-components/Input/index"
-import Button from "@ui-components/Button/index"
-import Link from "@ui-components/Link/index"
+import Input from "@/ui-components/Input/index"
+import Button from "@/ui-components/Button/index"
+import Link from "@/ui-components/Link/index"
 
 const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => {
 	const dispatch = useDispatch()
@@ -26,6 +26,10 @@ const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => 
 
 		return normalizedContentWidth + paddingWidth + EXTRA_SPACE
 	})()
+
+	useEffect(() => {
+		document.title = "Восстановление пароля"
+	}, [])
 
 	const onSubmit = async () => {
 		try {

@@ -1,10 +1,10 @@
 import React from "react"
 import { Route, Redirect, Switch } from "react-router-dom"
 
-import DefaultRoute from "../../../ui-components/DefaultRoute"
+import DefaultRoute from "@/ui-components/DefaultRoute"
 import AuthDefaultLayout from "../layouts/Default"
-import Login from "./Login"
-import PasswordReset from "./PasswordReset"
+import Login from "./Login/Index"
+import PasswordReset from "./PasswordReset/Index"
 
 const AuthIndex = () => {
 	return (

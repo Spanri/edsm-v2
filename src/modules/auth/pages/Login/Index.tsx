@@ -1,14 +1,14 @@
-import React, { useState } from "react"
-import "./Login.scss"
+import React, { useState, useEffect } from "react"
+import "./styles.scss"
 import { useHistory, useLocation } from "react-router-dom"
 
 import { useDispatch } from "react-redux"
-import { login } from "../../../store/profileSlice"
-import useAlert from "../../../hooks/alert"
+import { login } from "@/store/profileSlice"
+import useAlert from "@/hooks/alert"
 
-import Input from "../../../ui-components/Input/index"
-import Button from "../../../ui-components/Button/index"
-import Link from "../../../ui-components/Link/index"
+import Input from "@/ui-components/Input/index"
+import Button from "@/ui-components/Button/index"
+import Link from "@/ui-components/Link/index"
 
 const Login = () => {
 	const history = useHistory()
@@ -21,6 +21,10 @@ const Login = () => {
 	const [isShowPassword, setIsShowPassword] = useState(false)
 
 	const { from }: { from: { pathname: string } } = location.state || ({ from: { pathname: "/" } } as any)
+
+	useEffect(() => {
+		document.title = "Вход"
+	}, [])
 
 	const onLogin = async () => {
 		try {

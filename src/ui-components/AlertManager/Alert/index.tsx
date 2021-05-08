@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
-import { CustomTimer } from "../../../helpers/timer.helper"
+import { CustomTimer } from "@/helpers/timer.helper"
 
-import Boop from "../../Boop"
+import Boop from "@/ui-components/Boop"
 
 const THEMES = ["info", "success", "error"] as const
 

@@ -1,13 +1,14 @@
-import React from "react"
-import { useSelector } from "react-redux"
-import { selectUser } from "../../../store/profileSlice"
-
-import { useDispatch } from "react-redux"
-import { logout } from "../../../store/profileSlice"
+import React, { useEffect } from "react"
+import { useSelector, useDispatch } from "react-redux"
+import { selectUser, logout } from "@/store/profileSlice"
 
 const Main = () => {
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
+
+	useEffect(() => {
+		document.title = "Главная"
+	}, [])
 
 	const onLogout = () => {
 		dispatch(logout())

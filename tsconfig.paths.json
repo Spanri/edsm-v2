@@ -4,14 +4,7 @@
 		"paths": {
 			"react/*": ["node_modules/*"],
 			"@node_modules/*": ["node_modules/*"],
-			"@/*": ["src/*"],
-			"@store/*": ["src/store/*"],
-			"@assets/*": ["src/assets/*"],
-			"@ui-components/*": ["src/ui-components/*"],
-			"@helpers/*": ["src/helpers/*"],
-			"@hooks/*": ["src/hooks/*"],
-			"@layouts/*": ["src/layouts/*"],
-			"@modules/*": ["src/modules/*"]
+			"@/*": ["src/*"]
 		}
 	}
 }

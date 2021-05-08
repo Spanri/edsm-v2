@@ -1,6 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import { addSuccess, addError, deleteAlert, clearSuccesses, clearErrors, clearAll } from "../store/alertSlice"
+import { addSuccess, addError, deleteAlert, clearSuccesses, clearErrors, clearAll } from "@/store/alertSlice"
 
 const useAlert = () => {
 	const dispatch = useDispatch()

@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit"
-import { loadFromLocalStorage, saveToLocalStorage } from "../helpers/lsState.helper"
+import { loadFromLocalStorage, saveToLocalStorage } from "@/helpers/lsState.helper"
 
 import profileReducer from "./profileSlice"
 import alertReducer from "./alertSlice"

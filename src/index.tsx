@@ -1,6 +1,6 @@
 import React from "react"
 import ReactDOM from "react-dom"
-import { STATE_NAME } from "./helpers/lsState.helper"
+import { STATE_NAME } from "@/helpers/lsState.helper"
 
 import App from "./App"
 
