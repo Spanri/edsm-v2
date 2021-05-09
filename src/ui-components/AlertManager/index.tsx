@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
-import useAlert from "@/hooks/alert"
+import { useAlert } from "@/hooks"
 
 import Alert from "./Alert/index"
 

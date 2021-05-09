@@ -1,108 +1,47 @@
-// import * as axios from "axios";
-// import { getCookie } from "./utils";
+import axios from "axios"
+import { handleErrors } from "@/helpers/error.helper"
 
-/**
- * Обработка api ошибок
- *
- * @param {Object} error объект с ошибкой с бекенда
- * @param {String} message сообщение, если ошибки в data нет
- * @returns {
- *   message: string,
- *   fields: { field1: "", field2: "" },
- *   isFormError: boolean,
- *   isFormOtherError: boolean
- * }
- */
-const handleErrors = (error: { message: string; data: any }, message: string = "Ошибка") => {
-	// Если в error нет data - возвращаем свою ошибку-затычку
-	const hasDataMessage = error && error.data && Object.keys(error.data).length > 0
-	if (!hasDataMessage) {
-		return { message }
-	}
+const BASE_URL = "https://reqres.in/api"
 
-	const data = { ...error.data }
-	const SPECIAL_KEYS = ["_code_error", "_alert"]
+const handleSuccessRequest = async (config: any) => config
 
-	// только то, что не специальный ключ
-	const normalizedData = { ...error.data }
-	for (const key in normalizedData) {
-		if (SPECIAL_KEYS.includes(key)) {
-			delete normalizedData[key]
+const handleErrorRequest = (errorResponse: any) => Promise.reject(errorResponse)
+
+const handleSuccessResponse = (successResponse: any) => successResponse.data
+
+const temporaryHandler = (errorResponse: any) => {
+	const response = errorResponse.response
+	const fields = JSON.parse(response.config.data)
+	Object.keys(fields).forEach((fieldKey: string) => {
+		const field = fields[fieldKey]
+
+		if (!field || field == "") {
+			fields[fieldKey] = "Не заполнено"
+		} else {
+			fields[fieldKey] = null
 		}
-	}
+	})
 
-	/**
-	 * Каждый элемент массива data - массив вида [option, value].
-	 * Если value - массив, то пушим в массив ошибок каждый элемент массива value.
-	 * Если value - не массив, то скорее всего это просто строка. Пушим ее в массив ошибок.
-	 */
-	const newMessage = (() => {
-		const errors = []
-
-		for (const [key, value] of Object.entries(normalizedData)) {
-			if (Array.isArray(value)) {
-				value.forEach(valueItem => {
-					errors.push(valueItem)
-				})
-			} else {
-				errors.push(value)
-			}
-		}
-
-		return errors.join("; ")
-	})()
-
-	const fields = (() => {
-		const normalizedFields = { ...normalizedData }
-
-		for (const [key, value] of Object.entries(normalizedFields)) {
-			if (Array.isArray(value)) {
-				normalizedFields[key] = value.join("; ")
-			} else {
-				normalizedFields[key] = value
-			}
-		}
-
-		return normalizedFields
-	})()
-
-	return { message: newMessage, fields: fields }
+	return Promise.reject({ message: response.data.error, fields: fields })
 }
 
-export default {}
+const handleErrorResponse = (errorResponse: any) => {
+	if (!errorResponse.response) {
+		return Promise.reject({ message: "Внутренняя ошибка", fields: {} })
+	}
 
-// export default class Http {
-//   constructor() {
-//     this.api_token = null;
-//     this.client = null;
-//     this.api_url = process.env.REACT_APP_API_ENDPOINT;
-//   }
+	// return Promise.reject(handleErrors(errorResponse.response.data))
+	return temporaryHandler(errorResponse)
+}
 
-//   init = () => {
-//     this.api_token = getCookie("ACCESS_TOKEN");
+const http = axios.create({
+	baseURL: BASE_URL,
+	// 'Authorization': `Bearer ${keys.access_token}`,
+	Accept: "application/json",
+	"Content-Type": "application/x-www-form-urlencoded"
+} as any)
 
-//     let headers = {
-//       Accept: "application/json",
-//     };
+http.interceptors.request.use(handleSuccessRequest, handleErrorRequest)
+http.interceptors.response.use(handleSuccessResponse, handleErrorResponse)
 
-//     if (this.api_token) {
-//       headers.Authorization = `Bearer ${this.api_token}`;
-//     }
-
-//     this.client = axios.create({
-//       baseURL: this.api_url,
-//       timeout: 31000,
-//       headers: headers,
-//     });
-
-//     return this.client;
-//   };
-
-//   getUserList = (params) => {
-//     return this.init().get("/users", { params: params });
-//   };
-
-//   addNewUser = (data) => {
-//     return this.init().post("/users", data);
-//   };
-// }
+export { http }

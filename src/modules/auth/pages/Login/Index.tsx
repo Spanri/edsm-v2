@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "./styles.scss"
 import { useHistory, useLocation } from "react-router-dom"
 
 import { useDispatch } from "react-redux"
 import { login } from "@/store/profileSlice"
-import useAlert from "@/hooks/alert"
+
+import { useAlert, useTitle } from "@/hooks"
+import { vEmail, vRequired, vApi } from "@/helpers/validate.helper"
 
 import Input from "@/ui-components/Input/index"
 import Button from "@/ui-components/Button/index"
 import Link from "@/ui-components/Link/index"
 
 const Login = () => {
+	useTitle("Вход")
+
 	const history = useHistory()
 	const location = useLocation()
 	const dispatch = useDispatch()
@@ -19,12 +23,14 @@ const Login = () => {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [apiErrors, setApiErrors]: [any, any] = useState({})
 
 	const { from }: { from: { pathname: string } } = location.state || ({ from: { pathname: "/" } } as any)
 
-	useEffect(() => {
-		document.title = "Вход"
-	}, [])
+	const validate = {
+		email: [vRequired(), vEmail(), vApi(apiErrors["email"])],
+		password: [vRequired(), vApi(apiErrors["password"])]
+	}
 
 	const onLogin = async () => {
 		try {
@@ -32,7 +38,8 @@ const Login = () => {
 
 			history.replace(from)
 			clearErrors()
-		} catch ({ message }) {
+		} catch ({ message, fields }) {
+			setApiErrors(fields)
 			addError(message)
 		}
 	}
@@ -45,6 +52,7 @@ const Login = () => {
 				className="login__input"
 				value={email}
 				onChange={setEmail}
+				validate={validate["email"]}
 				type="email"
 				placeholder="example@example.com"
 				width="100%"
@@ -54,13 +62,14 @@ const Login = () => {
 				className="login__input"
 				value={password}
 				onChange={setPassword}
+				validate={validate["password"]}
 				type={isShowPassword ? "text" : "password"}
 				placeholder="123456#a"
 				width="100%"
 				label={
 					<div className="login__password">
 						<span className="login__password-title">ПАРОЛЬ</span>
-						<Link className="login__password-remember-button" to={{ pathname: "password-reset/" }}>
+						<Link className="login__password-remember-button" to={{ pathname: "/password-reset" }}>
 							Забыли пароль?
 						</Link>
 					</div>

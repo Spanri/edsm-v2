@@ -25,13 +25,13 @@ const Alert = (props: propsType) => {
 
 		setCustomTimer(customTimer)
 
-		setInterval(() => {
+		const intervalId = setInterval(() => {
 			setTimeLeft(customTimer.getTimeLeft())
 		}, 10)
 
 		return () => {
 			customTimer.clear()
-			setIsShow(false)
+			clearInterval(intervalId)
 		}
 	}, [])
 

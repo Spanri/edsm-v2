@@ -1,16 +1,18 @@
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import "./styles.scss"
 import { useResizeDetector } from "react-resize-detector"
 
 import { useDispatch } from "react-redux"
 import { resetPassword } from "@/store/profileSlice"
-import useAlert from "@/hooks/alert"
+import { useAlert, useTitle } from "@/hooks"
 
 import Input from "@/ui-components/Input/index"
 import Button from "@/ui-components/Button/index"
 import Link from "@/ui-components/Link/index"
 
 const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => {
+	useTitle("Восстановление пароля")
+
 	const dispatch = useDispatch()
 	const { addError, clearErrors } = useAlert()
 	const { width: contentWidth, height: contentHeight, ref: contentRef } = useResizeDetector()
@@ -26,10 +28,6 @@ const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => 
 
 		return normalizedContentWidth + paddingWidth + EXTRA_SPACE
 	})()
-
-	useEffect(() => {
-		document.title = "Восстановление пароля"
-	}, [])
 
 	const onSubmit = async () => {
 		try {
@@ -74,7 +72,7 @@ const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => 
 				</React.Fragment>
 			)}
 
-			<Link className="password-reset__login-button" to={{ pathname: "login/" }}>
+			<Link className="password-reset__login-button" to={{ pathname: "/login" }}>
 				На страницу входа
 			</Link>
 		</div>

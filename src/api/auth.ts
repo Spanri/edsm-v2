@@ -1,29 +1,15 @@
-const login = async ({ email, password }: loginDataType) => {
-	try {
-		if (email != "email") {
-			throw new Error("Неправильный Email или Пароль")
-		}
+import { http } from "@/helpers/http.helper"
 
-		// Login action
-	} catch (errors) {
-		throw errors
-	}
+const login = async (data: loginDataType) => {
+	return await http.post("login", data, { headers: { "X-FakeAPI-Action": "register" } })
 }
 
 const logout = async () => {
-	try {
-		// Exit action
-	} catch (errors) {
-		throw errors
-	}
+	// Exit action
 }
 
 const resetPassword = async ({ email }: resetPasswordDataType) => {
-	try {
-		// Exit action
-	} catch (errors) {
-		throw errors
-	}
+	// Exit action
 }
 
 export default { login, logout, resetPassword }

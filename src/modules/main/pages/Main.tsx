@@ -1,14 +1,13 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, logout } from "@/store/profileSlice"
+import { useTitle } from "@/hooks"
 
 const Main = () => {
+	useTitle("Главная")
+
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
-
-	useEffect(() => {
-		document.title = "Главная"
-	}, [])
 
 	const onLogout = () => {
 		dispatch(logout())
