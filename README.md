@@ -4,7 +4,7 @@
 
 ### Демо
 
-[Смотреть](http://Spanri.github.io/edsm-v2)
+[Смотреть](https://edsm-anina.netlify.app/)
 
 ### Что это?
 
