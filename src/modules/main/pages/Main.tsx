@@ -2,6 +2,7 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, logout } from "@/store/profileSlice"
 import { useTitle } from "@/hooks"
+import Button from "@/ui-components/Button"
 
 const Main = () => {
 	useTitle("Главная")
@@ -14,10 +15,26 @@ const Main = () => {
 	}
 
 	return (
-		<div>
-			<p>user: {user}</p>
-			Главная. Ха-ха, здесь ничего нет.
-			<button onClick={onLogout}>Выйти</button>
+		<div style={{ padding: "30px" }}>
+			<p>
+				{" "}
+				<strong>Главная</strong>
+			</p>
+
+			<br />
+
+			<div>
+				Данные юзера:
+				<p>token: {user.token}</p>
+			</div>
+
+			<br />
+
+			<p>Ха-ха, здесь ничего нет.</p>
+
+			<br />
+
+			<Button onClick={onLogout}>Выйти</Button>
 		</div>
 	)
 }

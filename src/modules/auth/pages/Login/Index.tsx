@@ -52,7 +52,9 @@ const Login = () => {
 		password: [vRequired(), vApi(apiErrors["password"])]
 	}
 
-	const onLogin = async () => {
+	const onLogin = async (event: any) => {
+		event.preventDefault()
+
 		try {
 			await dispatch(login({ email, password }))
 
@@ -65,7 +67,7 @@ const Login = () => {
 	}
 
 	return (
-		<form className="login">
+		<form className="login" onSubmit={onLogin}>
 			<h2 className="login__title">Войти в систему</h2>
 
 			<Input
@@ -102,7 +104,7 @@ const Login = () => {
 				}
 			/>
 
-			<Button className="login__submit" width="100%" onClick={onLogin}>
+			<Button className="login__submit" type="submit" width="100%">
 				ВОЙТИ
 			</Button>
 

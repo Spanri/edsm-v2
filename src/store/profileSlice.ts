@@ -8,12 +8,10 @@ interface userType {
 interface stateType {
 	user: userType | null
 	isAuthenticated: boolean
-	token: string | null
 }
 
 interface setUserType {
 	user: userType | null
-	token: string | null
 }
 
 export const profileSlice = createSlice({
@@ -21,19 +19,12 @@ export const profileSlice = createSlice({
 
 	initialState: {
 		isAuthenticated: false,
-		user: null,
-		token: null
+		user: null
 	} as stateType,
 
 	reducers: {
 		setUser: (state, action: { payload: any }) => {
-			if (!action.payload) {
-				state.user = null
-				state.token = null
-			} else {
-				state.user = action.payload.user
-				state.token = action.payload.token
-			}
+			state.user = action.payload || null
 		},
 
 		clearUser: state => {
@@ -66,7 +57,6 @@ export const resetPassword = (data: resetPasswordDataType) => async (dispatch: a
 
 export const selectIsAuthenticated = (state: any) => state.profile.isAuthenticated
 export const selectUser = (state: any) => state.profile.user
-export const selectToken = (state: any) => state.profile.token
 
 export const { setUser, clearUser, setIsAuthenticated } = profileSlice.actions
 export default profileSlice.reducer
