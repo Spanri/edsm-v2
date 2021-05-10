@@ -4,8 +4,8 @@ import PropTypes from "prop-types"
 
 interface propsType {
 	children: any
-	routes: any
 	path: string
+	routes?: any
 }
 
 const DefaultRoute = (props: propsType) => {
@@ -25,9 +25,9 @@ const DefaultRoute = (props: propsType) => {
 }
 
 DefaultRoute.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	routes: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-	path: PropTypes.string
+	children: PropTypes.node.isRequired,
+	path: PropTypes.string.isRequired,
+	routes: PropTypes.node
 }
 
 export default DefaultRoute

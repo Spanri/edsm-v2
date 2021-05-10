@@ -7,7 +7,7 @@ const THEMES = ["primary", "primary-animated", "gray"] as const
 
 interface propsType {
 	children: any
-	ref: any
+	ref?: any
 	className?: string
 	type?: typeof TYPES[number]
 	theme?: typeof THEMES[number]
@@ -46,7 +46,7 @@ Button.defaultProps = {
 }
 
 Button.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	children: PropTypes.node.isRequired,
 	ref: PropTypes.any,
 	className: PropTypes.string,
 	type: PropTypes.oneOf(TYPES),

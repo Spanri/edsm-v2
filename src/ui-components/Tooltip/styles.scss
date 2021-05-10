@@ -1,0 +1,12 @@
+.ui-tooltip {
+	font-size: 12px;
+	background: $gray-dark;
+	color: $white;
+	margin-top: 8px;
+
+	&:hover {
+		cursor: pointer;
+		transition: 0.3s;
+		background: $primary-dark;
+	}
+}

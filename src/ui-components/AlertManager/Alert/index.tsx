@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import "./styles.scss"
 import { CustomTimer } from "@/helpers/timer.helper"
 
-import Boop from "@/ui-components/Boop"
+import CloseButton from "@/ui-components/CloseButton/index"
 
 const THEMES = ["info", "success", "error"] as const
 
@@ -56,11 +56,7 @@ const Alert = (props: propsType) => {
 			<div className="ui-alert-inner">
 				<div className="ui-alert__content">{props.children}</div>
 
-				<div className="ui-alert__close">
-					<Boop>
-						<i className="ui-alert__close-icon icon-close" onClick={onPrettyDelete} />
-					</Boop>
-				</div>
+				<CloseButton className="ui-alert__close" onClick={onPrettyDelete} />
 			</div>
 
 			<div className="ui-alert__loading" style={{ width: (timeLeft / props.timeout) * 100 + "%" }} />
@@ -74,7 +70,7 @@ Alert.defaultProps = {
 }
 
 Alert.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
 	theme: PropTypes.oneOf(THEMES),
 	timeout: PropTypes.number,

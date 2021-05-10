@@ -1,0 +1,45 @@
+.ui-modal {
+	position: absolute;
+	top: 0;
+	left: 0;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	height: 100%;
+	width: 100%;
+	background: rgba($gray-dark, 0.5);
+
+	&-wrapper {
+		height: 100%;
+		width: 100%;
+	}
+
+	&-inner {
+		pointer-events: all;
+		padding: 20px;
+		border-radius: 3px;
+		background: $white;
+		box-shadow: 0px 5px 15px 0px #b0c3d9;
+	}
+
+	&__header {
+		display: flex;
+		align-items: flex-start;
+		justify-content: space-between;
+	}
+
+	&__title {
+		font-size: 18px;
+		font-weight: bold;
+		font-family: Montserrat;
+		padding-bottom: 20px;
+	}
+
+	&__close {
+		padding-left: 15px;
+		margin-top: -5px;
+		margin-left: auto;
+	}
+}

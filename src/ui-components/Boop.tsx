@@ -7,7 +7,7 @@ import PropTypes from "prop-types"
  */
 
 interface propsType {
-	children?: any
+	children: any
 	className?: string
 	rotation?: number
 	timing?: number
@@ -52,7 +52,7 @@ Boop.defaultProps = {
 }
 
 Boop.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
 	rotation: PropTypes.number,
 	timing: PropTypes.number

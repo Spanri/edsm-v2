@@ -11,6 +11,7 @@ import { vEmail, vRequired, vApi } from "@/helpers/validate.helper"
 import Input from "@/ui-components/Input/index"
 import Button from "@/ui-components/Button/index"
 import Link from "@/ui-components/Link/index"
+import Modal from "@/ui-components/Modal"
 
 const Login = () => {
 	useTitle("Вход")
@@ -23,9 +24,28 @@ const Login = () => {
 	const [email, setEmail] = useState("")
 	const [password, setPassword] = useState("")
 	const [isShowPassword, setIsShowPassword] = useState(false)
+	const [isRegModalOpen, setIsRegModalOpen] = useState(false)
 	const [apiErrors, setApiErrors]: [any, any] = useState({})
 
 	const { from }: { from: { pathname: string } } = location.state || ({ from: { pathname: "/" } } as any)
+
+	const contacts = [
+		{
+			id: "email",
+			label: "Почта",
+			value: "kozlova9v@mail.ru"
+		},
+		{
+			id: "telegram",
+			label: "Telegram",
+			value: "spanri"
+		},
+		{
+			id: "vk",
+			label: "VK",
+			value: "https://vk.com/animeshny_kot"
+		}
+	]
 
 	const validate = {
 		email: [vRequired(), vEmail(), vApi(apiErrors["email"])],
@@ -86,7 +106,33 @@ const Login = () => {
 				ВОЙТИ
 			</Button>
 
-			<div className="login__registration-button link">Хочу зарегистрироваться</div>
+			<div className="login__registration-button link" onClick={() => setIsRegModalOpen(true)}>
+				Хочу зарегистрироваться
+			</div>
+
+			<Modal
+				isOpen={isRegModalOpen}
+				modalTitle="reg-modal"
+				title={"Памятка по регистрации"}
+				style={{ maxWidth: "500px", height: "max-content" }}
+				onClose={() => setIsRegModalOpen(false)}
+			>
+				<div>Новые аккаунты регистрирует администратор. Если вы хотите получить доступ к системе, обратитесь к администратору:</div>
+				<br />
+
+				<div className="reg-modal__contacts-wrapper">
+					<div className="reg-modal__contacts">
+						{contacts.map(contact => (
+							<div key={"reg-modal-" + contact.id} className="reg-modal__contacts-item">
+								<label className="reg-modal__contacts-label">{contact.label}:</label>
+								<strong className="reg-modal__contacts-value">{contact.value}</strong>
+							</div>
+						))}
+					</div>
+
+					<div className="reg-modal__call-icon">🤙</div>
+				</div>
+			</Modal>
 		</form>
 	)
 }

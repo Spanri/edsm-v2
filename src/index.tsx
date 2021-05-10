@@ -1,6 +1,7 @@
 import React from "react"
 import ReactDOM from "react-dom"
 import { STATE_NAME } from "@/helpers/lsState.helper"
+import "./index.scss"
 
 import App from "./App"
 
@@ -21,7 +22,11 @@ window.addEventListener("storage", event => {
 
 ReactDOM.render(
 	<React.StrictMode>
-		<App />
+		<div id="app-root">
+			<App />
+		</div>
+
+		<div id="modal-root" />
 	</React.StrictMode>,
 	document.getElementById("root")
 )

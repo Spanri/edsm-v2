@@ -1,5 +1,4 @@
 import React from "react"
-import { Redirect } from "react-router-dom"
 import PropTypes from "prop-types"
 import "./styles.scss"
 
@@ -9,7 +8,7 @@ interface propsType {
 	children: any
 	className?: string
 	target?: string
-	theme?: string
+	theme?: typeof THEMES[number]
 	// to or onClick
 	to?: { pathname: string }
 	onClick?: (event: any) => void
@@ -39,7 +38,7 @@ Link.defaultProps = {
 }
 
 Link.propTypes = {
-	children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	children: PropTypes.node.isRequired,
 	className: PropTypes.string,
 	target: PropTypes.string,
 	theme: PropTypes.oneOf(THEMES),

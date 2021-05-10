@@ -16,7 +16,7 @@ interface propsType {
 	label?: any
 	width?: string
 	height?: string
-	right: any
+	right?: any
 	onChange?: (value: any) => void
 	onChangeFull?: (value: any) => void
 }
@@ -172,16 +172,16 @@ Input.defaultProps = {
 }
 
 Input.propTypes = {
-	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+	value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
 	className: PropTypes.string,
 	placeholder: PropTypes.string,
 	type: PropTypes.string,
 	validate: PropTypes.array,
 	disabled: PropTypes.bool,
-	label: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	label: PropTypes.node,
 	width: PropTypes.string,
 	height: PropTypes.string,
-	right: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+	right: PropTypes.node,
 	onChange: PropTypes.func,
 	onChangeFull: PropTypes.func
 }

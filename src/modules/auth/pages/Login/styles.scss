@@ -64,3 +64,28 @@
 		margin-top: auto;
 	}
 }
+
+.reg-modal {
+	&__contacts {
+		min-width: 200px;
+
+		&-wrapper {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		&-item {
+			padding-bottom: 6px;
+		}
+
+		&-label {
+			padding-right: 6px;
+		}
+	}
+
+	&__call-icon {
+		font-size: 32px;
+	}
+}

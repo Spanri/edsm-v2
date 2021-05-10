@@ -77,8 +77,8 @@ const AlertManager = (props: propsType) => {
 
 AlertManager.propTypes = {
 	className: PropTypes.string,
-	successItems: PropTypes.array,
-	errorItems: PropTypes.array
+	successItems: PropTypes.array.isRequired,
+	errorItems: PropTypes.array.isRequired
 }
 
 export default AlertManager
