@@ -39,7 +39,7 @@ const ModalPortal = (props: portalPropsType) => {
 				modalRoot.removeChild(el)
 			}
 		}
-	})
+	}, [el])
 
 	return ReactDOM.createPortal(props.children, el)
 }
@@ -47,6 +47,21 @@ const ModalPortal = (props: portalPropsType) => {
 const Modal = (props: propsType) => {
 	const ref = useRef(null)
 	useClickOutside({ ref, onClick: props.onClose })
+
+	useEffect(() => {
+		const handleEsc = (event: any) => {
+			if (event.keyCode === 27) {
+				if (props.onClose) {
+					props.onClose(event)
+				}
+			}
+		}
+		window.addEventListener("keydown", handleEsc)
+
+		return () => {
+			window.removeEventListener("keydown", handleEsc)
+		}
+	}, [])
 
 	return (
 		<ModalPortal modalTitle={props.modalTitle}>
