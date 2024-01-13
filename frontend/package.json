@@ -2,6 +2,23 @@
 	"name": "edms-anina",
 	"version": "0.1.0",
 	"private": true,
+	"scripts": {
+		"start": "react-app-rewired start",
+		"install-and-start": "npm ci && npm start",
+		"build": "react-app-rewired build"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
 	"dependencies": {
 		"@reduxjs/toolkit": "^1.5.1",
 		"@testing-library/react": "^11.2.6",
@@ -21,22 +38,6 @@
 		"react-scripts": "4.0.3",
 		"sass-resources-loader": "^2.2.1",
 		"typescript": "^4.2.4"
-	},
-	"scripts": {
-		"start": "react-app-rewired start",
-		"build": "react-app-rewired build"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
 	},
 	"devDependencies": {
 		"@types/lodash": "^4.14.168",

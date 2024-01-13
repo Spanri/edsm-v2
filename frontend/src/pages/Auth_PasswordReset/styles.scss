@@ -1,6 +1,6 @@
 .password-reset {
 	min-width: 300px;
-	max-width: 400px;
+	max-width: 375px;
 	height: 100%;
 	min-height: 300px;
 
@@ -12,7 +12,7 @@
 	}
 
 	@media (max-width: 650px) {
-		max-width: 400px;
+		max-width: 375px;
 	}
 
 	@media (max-width: 450px) {
@@ -34,14 +34,17 @@
 	}
 
 	&__info {
-		$extra-space: 40px;
-
+		font-size: 14px;
 		margin-bottom: 30px;
 		padding: 20px;
-		padding-right: calc(20px + #{$extra-space});
 		color: $primary-dark;
 		background: $primary-light;
 		border-radius: 3px;
+
+		@media (max-width: 450px) {
+			padding: 15px;
+			font-size: 13px;
+		}
 	}
 
 	&__input {

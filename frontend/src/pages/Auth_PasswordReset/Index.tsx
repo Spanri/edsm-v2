@@ -46,7 +46,8 @@ const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => 
 
 			{!isEmailSent ? (
 				<React.Fragment>
-					<div className="password-reset__info" style={{ width: infoWidth + "px" }}>
+					<div className="password-reset__info">
+						{/* style={{ width: infoWidth + "px" }} */}
 						Введите почту, которая была указана при регистрации. На эту почту придет письмо с дальнейшими указаниями.
 					</div>
 

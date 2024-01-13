@@ -9,8 +9,8 @@ import { selectIsAuthenticated } from "@/store/profileSlice"
 import { selectSuccessItems, selectErrorItems } from "@/store/alertSlice"
 
 import Default from "@/layouts/Default"
-import Auth from "@/modules/auth/pages/_Index"
-import Main from "@/modules/main/pages/Main"
+import Auth from "@/pages/Auth_Login/Index"
+import Main from "@/pages/Main_Index/Index"
 import AlertManager from "@/ui-components/AlertManager"
 
 const App = () => {
