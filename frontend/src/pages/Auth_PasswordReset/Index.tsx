@@ -6,11 +6,11 @@ import { useDispatch } from "react-redux"
 import { resetPassword } from "@/store/profileSlice"
 import { useAlert, useTitle } from "@/hooks"
 
-import Input from "@/ui-components/Input/index"
-import Button from "@/ui-components/Button/index"
-import Link from "@/ui-components/Link/index"
+import Input from "@/components-ui/Input/index"
+import Button from "@/components-ui/Button/index"
+import Link from "@/components-ui/Link/index"
 
-const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => {
+const Auth_PasswordReset = (props: { parentWidth: number; parentHeight: number }) => {
 	useTitle("Восстановление пароля")
 
 	const dispatch = useDispatch()
@@ -80,4 +80,4 @@ const PasswordReset = (props: { parentWidth: number; parentHeight: number }) => 
 	)
 }
 
-export default PasswordReset
+export default Auth_PasswordReset

@@ -8,12 +8,12 @@ import { login } from "@/store/profileSlice"
 import { useAlert, useTitle } from "@/hooks"
 import { vEmail, vRequired, vApi } from "@/helpers/validate.helper"
 
-import Input from "@/ui-components/Input/index"
-import Button from "@/ui-components/Button/index"
-import Link from "@/ui-components/Link/index"
-import Modal from "@/ui-components/Modal"
+import Input from "@/components-ui/Input/index"
+import Button from "@/components-ui/Button/index"
+import Link from "@/components-ui/Link/index"
+import Modal from "@/components-ui/Modal"
 
-const Login = () => {
+const Auth_Login = () => {
 	useTitle("Вход")
 
 	const history = useHistory()
@@ -143,4 +143,4 @@ const Login = () => {
 	)
 }
 
-export default Login
+export default Auth_Login

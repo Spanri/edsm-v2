@@ -5,7 +5,7 @@ import "./styles.scss"
 
 import { useClickOutside } from "@/hooks"
 
-import CloseButton from "@/ui-components/CloseButton/index"
+import CloseButton from "@/components-ui/CloseButton/index"
 
 interface portalPropsType {
 	children: any

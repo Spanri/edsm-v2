@@ -1,8 +1,9 @@
 import React from "react"
-import "./Default.scss"
+import "./Auth_Default.scss"
 import { useResizeDetector } from "react-resize-detector"
 
-import Boop from "@/ui-components/Boop"
+import Boop from "@/components-ui/Boop"
+import Link from "@/components-ui/Link"
 
 const AuthDefaultLayout = (props: { children: (params: any) => any }) => {
 	const { width: parentWidth, height: parentHeight, ref: parentRef } = useResizeDetector()
@@ -36,7 +37,10 @@ const AuthDefaultLayout = (props: { children: (params: any) => any }) => {
 				</div>
 			</div>
 
-			<div className="auth-default__copyright">© 2021 Spanri</div>
+			<div className="auth-default__copyright">
+				<div>© 2021-2024 Spanri</div>
+				<Link to={{ pathname: "/faq" }}>Помощь</Link>
+			</div>
 		</div>
 	)
 }
