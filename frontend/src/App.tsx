@@ -15,7 +15,7 @@ import DefaultLayout from "@/layouts/Default"
 
 import AuthLogin from "@/pages/Auth_Login/Index"
 import AuthPasswordReset from "@/pages/Auth_PasswordReset/Index"
-import Main from "@/pages/Main/Index"
+import LoggedMain from "@/pages/Logged_Main/Index"
 import SharedFAQ from "@/pages/Shared_FAQ/Index"
 import AlertManager from "@/components-ui/AlertManager"
 
@@ -86,7 +86,7 @@ const MainRouteResolver = () => {
 		<Switch>
 			<Route path="/">
 				<DefaultLayout>
-					<Main />
+					<LoggedMain />
 				</DefaultLayout>
 			</Route>
 		</Switch>

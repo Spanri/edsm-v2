@@ -5,7 +5,7 @@ import { useTitle } from "@/hooks"
 import Button from "@/components-ui/Button"
 import Header from "@/components-business/Header/Index"
 
-const Main = () => {
+const Logged_Main = () => {
 	useTitle("Главная")
 
 	const user = useSelector(selectUser)
@@ -43,4 +43,4 @@ const Main = () => {
 	)
 }
 
-export default Main
+export default Logged_Main
