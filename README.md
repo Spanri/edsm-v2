@@ -1,6 +1,6 @@
 Вторая версия диплома. Первая - [edsm-v1](https://github.com/Spanri/edsm-v1)
 
-# СЭД АНИНА :sweat_drops:
+# СЭД, open source :sweat_drops:
 
 ### Демо
 

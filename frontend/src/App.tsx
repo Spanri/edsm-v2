@@ -11,11 +11,13 @@ import { selectSuccessItems, selectErrorItems } from "@/store/alertSlice"
 import DefaultRoute from "@/components-ui/DefaultRoute"
 
 import AuthDefaultLayout from "@/layouts/Auth_Default"
+import LoggedDefaultLayout from "@/layouts/Logged_Default"
 import DefaultLayout from "@/layouts/Default"
 
 import AuthLogin from "@/pages/Auth_Login/Index"
 import AuthPasswordReset from "@/pages/Auth_PasswordReset/Index"
 import LoggedMain from "@/pages/Logged_Main/Index"
+import Profile from "@/pages/Profile_Main/Index"
 import SharedFAQ from "@/pages/Shared_FAQ/Index"
 import AlertManager from "@/components-ui/AlertManager"
 
@@ -83,13 +85,19 @@ const AuthRouteResolver = () => {
 
 const MainRouteResolver = () => {
 	return (
-		<Switch>
-			<Route path="/">
-				<DefaultLayout>
-					<LoggedMain />
-				</DefaultLayout>
-			</Route>
-		</Switch>
+		<LoggedDefaultLayout>
+			{params => (
+				<Switch>
+					<Route path="/profile">
+						<Profile />
+					</Route>
+
+					<Route path="/">
+						<LoggedMain />
+					</Route>
+				</Switch>
+			)}
+		</LoggedDefaultLayout>
 	)
 }
 

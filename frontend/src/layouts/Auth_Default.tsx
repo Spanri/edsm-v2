@@ -10,11 +10,11 @@ const AuthDefaultLayout = (props: { children: (params: any) => any }) => {
 
 	return (
 		<div className="auth-default">
-			<div className="auth-default__small-description">Система электронного документооборота “АНИНА”</div>
+			<div className="auth-default__small-description">Система электронного документооборота “АНЯ”</div>
 
 			<div className="auth-default-inner">
 				<div className="auth-default__description">
-					<h1 className="auth-default__description-title">Система электронного документооборота “АНИНА”</h1>
+					<h1 className="auth-default__description-title">Система электронного документооборота “АНЯ”</h1>
 
 					<div className="auth-default__description-slogan slogan">
 						<div className="slogan__title">Наш слоган:</div>
