@@ -1,0 +1,12 @@
+.profile-preview {
+	border-radius: 50px;
+	background: red;
+	height: 40px;
+	width: 40px;
+	cursor: pointer;
+	transition: 0.3s;
+
+	&:hover {
+		background: darkred;
+	}
+}

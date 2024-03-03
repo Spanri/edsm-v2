@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, logout } from "@/store/profileSlice"
 import { useTitle } from "@/hooks"
-import Link from "@/components-ui/Link"
+import Link from "@/shared/ui/Link"
 
 const Shared_FAQ = () => {
 	useTitle("Помощь")

@@ -8,10 +8,10 @@ import { login } from "@/store/profileSlice"
 import { useAlert, useTitle } from "@/hooks"
 import { vEmail, vRequired, vApi } from "@/helpers/validate.helper"
 
-import Input from "@/components-ui/Input/index"
-import Button from "@/components-ui/Button/index"
-import Link from "@/components-ui/Link/index"
-import Modal from "@/components-ui/Modal"
+import Input from "@/shared/ui/Input/index"
+import Button from "@/shared/ui/Button/index"
+import Link from "@/shared/ui/Link/index"
+import Modal from "@/shared/ui/Modal"
 
 const Auth_Login = () => {
 	useTitle("Вход")

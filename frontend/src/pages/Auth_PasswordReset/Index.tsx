@@ -6,9 +6,9 @@ import { useDispatch } from "react-redux"
 import { resetPassword } from "@/store/profileSlice"
 import { useAlert, useTitle } from "@/hooks"
 
-import Input from "@/components-ui/Input/index"
-import Button from "@/components-ui/Button/index"
-import Link from "@/components-ui/Link/index"
+import Input from "@/shared/ui/Input/index"
+import Button from "@/shared/ui/Button/index"
+import Link from "@/shared/ui/Link/index"
 
 const Auth_PasswordReset = (props: { parentWidth: number; parentHeight: number }) => {
 	useTitle("Восстановление пароля")

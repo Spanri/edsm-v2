@@ -1,0 +1,25 @@
+.header {
+	width: 100%;
+	background: $primary;
+	color: black;
+
+	display: flex;
+	align-items: center;
+
+	&__logo {
+		padding: 8px;
+	}
+
+	&__space {
+		flex-grow: 1;
+	}
+
+	&__global-search {
+		margin: 8px;
+	}
+
+	&__profile-preview {
+		margin: 8px;
+		margin-left: 0;
+	}
+}

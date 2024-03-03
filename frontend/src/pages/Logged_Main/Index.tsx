@@ -2,7 +2,7 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, logout } from "@/store/profileSlice"
 import { useTitle } from "@/hooks"
-import Button from "@/components-ui/Button"
+import Button from "@/shared/ui/Button"
 
 const Logged_Main = () => {
 	useTitle("Главная")

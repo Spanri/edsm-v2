@@ -2,8 +2,8 @@ import React from "react"
 import "./Auth_Default.scss"
 import { useResizeDetector } from "react-resize-detector"
 
-import Boop from "@/components-ui/Boop"
-import Link from "@/components-ui/Link"
+import Boop from "@/shared/ui/Boop"
+import Link from "@/shared/ui/Link"
 
 const AuthDefaultLayout = (props: { children: (params: any) => any }) => {
 	const { width: parentWidth, height: parentHeight, ref: parentRef } = useResizeDetector()

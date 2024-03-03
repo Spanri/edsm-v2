@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import "./styles.scss"
 import { CustomTimer } from "@/helpers/timer.helper"
 
-import CloseButton from "@/components-ui/CloseButton/index"
+import CloseButton from "@/shared/ui/CloseButton/index"
 
 const THEMES = ["info", "success", "error"] as const
 

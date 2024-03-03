@@ -2,7 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import "./styles.scss"
 
-import Boop from "@/components-ui/Boop"
+import Boop from "@/shared/ui/Boop"
 
 interface propsType {
 	className?: string

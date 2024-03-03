@@ -2,8 +2,8 @@ import React from "react"
 import "./styles.scss"
 import { useHistory } from "react-router-dom"
 
-import GlobalSearch from "./GlobalSearch"
-import ProfilePreview from "./ProfilePreview"
+import GlobalSearch from "@/shared/GlobalSearch"
+import ProfilePreview from "@/shared/ui/ProfilePreview"
 
 const Header = (props: any) => {
 	const history = useHistory()

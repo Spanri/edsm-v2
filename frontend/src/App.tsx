@@ -8,18 +8,19 @@ import store from "@/store/index"
 import { selectIsAuthenticated } from "@/store/profileSlice"
 import { selectSuccessItems, selectErrorItems } from "@/store/alertSlice"
 
-import DefaultRoute from "@/components-ui/DefaultRoute"
+import DefaultRoute from "@/shared/ui/DefaultRoute"
 
 import AuthDefaultLayout from "@/layouts/Auth_Default"
 import LoggedDefaultLayout from "@/layouts/Logged_Default"
+import ProfileDefaultLayout from "@/layouts/Profile_Default/index"
 import DefaultLayout from "@/layouts/Default"
 
 import AuthLogin from "@/pages/Auth_Login/Index"
 import AuthPasswordReset from "@/pages/Auth_PasswordReset/Index"
 import LoggedMain from "@/pages/Logged_Main/Index"
-import Profile from "@/pages/Profile_Main/Index"
+import ProfileNotifies from "@/pages/Profile_Notifies/Index"
 import SharedFAQ from "@/pages/Shared_FAQ/Index"
-import AlertManager from "@/components-ui/AlertManager"
+import AlertManager from "@/shared/ui/AlertManager"
 
 const App = () => {
 	return (
@@ -89,7 +90,19 @@ const MainRouteResolver = () => {
 			{params => (
 				<Switch>
 					<Route path="/profile">
-						<Profile />
+						<ProfileDefaultLayout>
+							{params => (
+								<Switch>
+									<Route path="/">
+										<ProfileNotifies />
+									</Route>
+
+									<Route path="/notifies">
+										<ProfileNotifies />
+									</Route>
+								</Switch>
+							)}
+						</ProfileDefaultLayout>
 					</Route>
 
 					<Route path="/">

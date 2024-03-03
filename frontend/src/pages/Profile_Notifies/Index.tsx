@@ -2,11 +2,9 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { selectUser, logout } from "@/store/profileSlice"
 import { useTitle } from "@/hooks"
-import Button from "@/components-ui/Button"
-import Header from "@/components-business/Header/Index"
 
-const Logged_Main = () => {
-	useTitle("Профиль, главная")
+const Profile_Notifies = () => {
+	useTitle("Профиль, уведомления")
 
 	const user = useSelector(selectUser)
 	const dispatch = useDispatch()
@@ -15,7 +13,7 @@ const Logged_Main = () => {
 		dispatch(logout())
 	}
 
-	return <div>Профиль</div>
+	return <div>Профиль, уведомления</div>
 }
 
-export default Logged_Main
+export default Profile_Notifies
